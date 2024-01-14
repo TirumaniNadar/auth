@@ -34,6 +34,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/register', 'App\Http\Controllers\UserController@register')->name('register');
 Route::post('/register/submit', 'App\Http\Controllers\UserController@registerSubmit')->name('register.submit');
 
+Route::get('/get-city-list', 'App\Http\Controllers\UserController@getCityList')->name('getCity');
+
 Route::get('/login', 'App\Http\Controllers\UserController@login')->name('login');
 Route::post('/login/submit', 'App\Http\Controllers\UserController@loginSubmit')->name('login.submit');
 

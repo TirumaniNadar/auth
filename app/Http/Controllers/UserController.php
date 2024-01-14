@@ -19,7 +19,25 @@ class UserController extends Controller
 
     function register()
     {
-        return view('register');
+        $filePath = public_path('states.json');
+        $stateFileData = file_get_contents($filePath);
+        // dd($stateFileData);
+        $states = json_decode($stateFileData, true);
+        // dd($states);
+        return view('register', ['states' => $states]);
+    }
+
+    function getCityList(Request $request)
+    {
+        // dd($request->all());
+        $filePath = public_path('states.json');
+        $stateFileData = file_get_contents($filePath);
+        $states = json_decode($stateFileData, true);
+        $cities = $states[$request->state];
+        // dd($cities);
+        return response()->json([
+            'cities' => $cities
+        ]);
     }
 
     public function registerSubmit(Request $request)
